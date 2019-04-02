@@ -1,24 +1,24 @@
 #include <stdio.h>
 
-char Encode(int y);
-char Decode(int y);
+int Encode(int y);
+int Decode(int y);
 
 int main()
 {
-    char choice;
-    char x[255];
+    int choice; //whether the word is going to be encrypted or decrypted
+    char word[255]; //the word that needs to be encrypted or decrypted
 printf("enter word to be encrypted or decrypted");
-scanf("%s", &*x);
+scanf("%s", &*word); //trying to save it in a array 
     
     
     do
-    {printf("Decode(1) or Encode(2)\n");
-    scanf("%s", &choice);
+    {printf("Decode(1) or Encode(2)\n"); //the decode or enode choice
+    scanf("%d", &choice);
     
    switch (choice){
-    case 1  : printf("%d", Decode(x));
+    case 1  : printf("%d", Decode(*word));
                 break;
-    case 2  : printf("%d", Encode(x));
+    case 2  : printf("%d", Encode(*word));
                 break;
     default : (printf("please insert 1 or 2\n"));
     
@@ -31,14 +31,15 @@ scanf("%s", &*x);
     return 0; 
 }
 
-char Encode(char y)
+int Encode(int y)
 {
-    y=0
+    y=0;
     
     return y;
 }
 
-char Decode(char y)
+int Decode(int y)
 {
+    y = 0;
     return y;
 }
