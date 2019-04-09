@@ -16,7 +16,7 @@ int main()
     
     word[1024] = tempword;  //transfering to the array
     
-    printf("%d\n", word[1]);
+    printf("%s\n", word);
     
     printf("what is the key?\n");  //key input
     scanf("%d", &key);
