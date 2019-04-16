@@ -32,10 +32,12 @@ int main()
         scanf("%s", &choice);
     
         if (choice == "Decode") {
-            printf("%s", Decryption((int)Message, key));
+            Message = Decryption((int)Message, key);
+            printf("%s", Message);
                 return 0;}
         else if (choice == "Encode") {
-        printf("%d", Encryption((int)Message, key));
+            Message = Encryption((int)Message, key);
+        printf("%s", Message);
                 return 0;}
         else
         (printf("please insert 1(Decode) or 2(Encode)\n"));
@@ -49,36 +51,43 @@ int main()
 
 int Encryption(int Message, int key)
 {
-    if ( < 65)
+    int n = 0
+    while (n < 1024){
+    
+        if (Message[Number] < 65)
         
-    else if (letter > 90)
-        return letter;
-
-    letter = letter + key;
-
-    if (letter < 65)
-        return (letter + 26);
-    else if (letter > 90)
-        return (letter - 26);
-    else 
-        return letter;
+        else if (Message[Number] > 90)
+            break;   
+        else {
+            Message[Number] = Message[Number] + key;
+            if (Message[Number] < 65)
+                Message[Number] = Message[Number] + 26;
+            else if (Message[Number] > 90)
+                Message[Number] = Message[Number] - 26;
+        }
+    }
+    return message;
 }
 
 
 int Decryption(int Message, int key)
 {
-    if (letter < 65)
-        return letter;
-    else if (letter > 90)
-        return letter;
-
-    letter = letter - key;
-
-    if (letter < 65)
-        return (letter + 26);
-    else if (letter > 90)
-        return (letter - 26);
-    else 
-        return letter;
+    int n = 0
+    while (n < 1024){
+        if (Message[Number] < 65)
+            break;
+        else if (Message[Number] > 90)
+            break;   
+        else {
+            Message[Number] = Message[Number] - key;
+            if (Message[Number] < 65)
+                Message[Number] = Message[Number] + 26;
+            else if (Message[Number] > 90)
+                Message[Number] = Message[Number] - 26;
+        }
+    }
+    return message;
 }
+
+
 
