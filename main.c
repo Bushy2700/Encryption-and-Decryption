@@ -1,56 +1,84 @@
 #include <stdio.h>
 #include <string.h>
 
-int Encode();
-int Decode();
+int Encryption(int Message, int key);
+int Decryption(int Message, int key);
 
 int main()
 {
-    int choice; //whether the word is going to be encrypted or decrypted
+    char choice; //whether the word is going to be encrypted or decrypted
     int key;  
     char word[1024]; //the word that needs to be encrypted or decrypted
-    char tempword;  //temporarily saving the word outside the array
+    FILE *Message;
+    int Number = 0;
     
-    printf("enter word to be encrypted or decrypted\n");
-    scanf("%s", &tempword); //trying to save it in a array 
-    
-    word[1024] = tempword;  //transfering to the array
-    
-    printf("%s\n", word);
+    printf("enter word to be encrypted or decrypted in Message file\n"); 
     
     printf("what is the key?\n");  //key input
     scanf("%d", &key);
     
-    do
-    {printf("Decode(1) or Encode(2)\n"); //the decode or encode choice
-    scanf("%d", &choice);
+    Message = fopen("Message", "r");
     
-    switch (choice) //making sure the choice is 1 or 2
-    { 
-        case 1  : printf("%d", Decode(word));
-                return 0;
-        case 2  : printf("%d", Encode(word));
-                return 0;
-        default : (printf("please insert 1 or 2\n"));
+    while (Number < 1024)
+    {
+        fscanf(Message, "%c", &word[Number]);
+        Number++;
     }
 
-    }   while ("choice =! 2 || choice =! 1");
+    
+    do
+    {
+        printf("Decode or Encode\n"); //the decode or encode choice
+        scanf("%s", &choice);
+    
+        if (choice == "Decode") {
+            printf("%s", Decryption((int)Message, key));
+                return 0;}
+        else if (choice == "Encode") {
+        printf("%d", Encryption((int)Message, key));
+                return 0;}
+        else
+        (printf("please insert 1(Decode) or 2(Encode)\n"));
+        
+        }   while ("choice =! 2 || choice =! 1");
 
+    
     
     return 0; 
 }
 
-int Encode(int y)
+int Encryption(int Message, int key)
 {
-    printf("Encode\n");
-    y=0;
-    
-    return y;
+    if ( < 65)
+        
+    else if (letter > 90)
+        return letter;
+
+    letter = letter + key;
+
+    if (letter < 65)
+        return (letter + 26);
+    else if (letter > 90)
+        return (letter - 26);
+    else 
+        return letter;
 }
 
-int Decode(int y)
+
+int Decryption(int Message, int key)
 {
-    printf("Decode\n");
-    y = 0;
-    return y;
+    if (letter < 65)
+        return letter;
+    else if (letter > 90)
+        return letter;
+
+    letter = letter - key;
+
+    if (letter < 65)
+        return (letter + 26);
+    else if (letter > 90)
+        return (letter - 26);
+    else 
+        return letter;
 }
+
