@@ -6,7 +6,7 @@ int Decryption(int letter, int key);
 
 int main()
 {
-    char choice; //whether the word is going to be encrypted or decrypted
+    int choice; //whether the word is going to be encrypted or decrypted
     int key;  
     char Word[1024]; //the word that needs to be encrypted or decrypted
     FILE *Message;
@@ -21,32 +21,38 @@ int main()
     
     Message = fopen("Message", "r");
     
-    while (Number < 1024)
+    while (feof(Message) == 0)
     {
         fscanf(Message, "%c", &Word[Number]);
         Number++;
     }
 
+    for (Number = 0; Number < 1024; Number++)
+        fprintf(Output ,"%d\n", (int)Word[Number]);
     do
     {
         printf("Decode(0) or Encode(1)\n"); //the decode or encode choice
-        scanf("%s", &choice);
+        scanf("%d", &choice);
         Number = 0;
-        if ((int)choice == 0) 
-        {for(Number = 0; (int)Message[Number] != 0; Number++){
+        if (choice == 0) 
+        {for(Number = 0; Number < 1024; Number++){
                 Word[Number] = Decryption((int)Word[Number], key);
                 }
+            fprintf(Output,"%s", Word);
+            return 0;
             }
 
-        else if ((int)choice == 1) {
-            for (Number = 0; (int)Message[Number] != 0; Number++){
+        else if (choice == 1) {
+            for (Number = 0; Number < 1024; Number++){
                 Word[Number] = Encryption((int)Word[Number], key);
                 }
+            fprintf(Output,"%s", Word);
+            return 0;
             }
         else
         (printf("please insert 1(Decode) or 2(Encode)\n"));
         
-    }   while ("choice =! 2 || choice =! 1");
+    }   while ("choice =! 2 && choice =! 1");
 
     
     
@@ -85,8 +91,6 @@ int Decryption(int letter, int key)
         return (letter - 26);
     else 
         return letter;
-    }
-
 }
 
 
