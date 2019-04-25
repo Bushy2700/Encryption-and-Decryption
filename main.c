@@ -6,6 +6,7 @@ int Decryption(int letter, int key);
 
 int main()
 {
+    int UnknownDecryptionNumber;
     int choice; //whether the word is going to be encrypted or decrypted
     int key;  
     char Word[1024]; //the word that needs to be encrypted or decrypted
@@ -37,13 +38,24 @@ int main()
         scanf("%d", &choice);
         Number = 0;
         if (choice == 0) 
-            {for (key = 0; key < 26; key++)
-                {for(Number = 0; Number < 1024; Number++){
-                Word[Number] = Decryption((int)Word[Number], key);
+            {printf("Unknown key(1) or Known key(0)\n");
+            scanf("%d", &choice);
+            if (choice == 1)
+                {key = 1;
+                for (UnknownDecryptionNumber = 0; UnknownDecryptionNumber < 26; UnknownDecryptionNumber++)
+                    {for(Number = 0; Number < 1024; Number++){
+                    Word[Number] = Decryption((int)Word[Number], key);
+                    }
+                fprintf(Output,"\n\n---------------------------------------------------------------------\n\n%s", Word);}
+                return 0;
                 }
-            fprintf(Output,"\n\n---------------------------------------------------------------------\n\n%s", Word);}
-            return 0;
+            else if (choice == 1)
+                {for(Number = 0; Number < 1024; Number++)
+                    Word[Number] = Decryption((int)Word[Number], key);
+                fprintf(Output,"%s", Word);
+                return 0;}
             }
+
 
         else if (choice == 1) {
             for (Number = 0; Number < 1024; Number++){
