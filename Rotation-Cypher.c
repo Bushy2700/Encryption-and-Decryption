@@ -1,4 +1,4 @@
-#include <stdio.h>
+ #include <stdio.h>
 #include <string.h>
 
 int Encryption(int letter, int key);
@@ -21,18 +21,19 @@ int main()
     do
     {
         scanf("%d", &key);}
-    while 
+    while (key < 1  || key > 25); //Making sure the key is between 1 and 25
+    
     Message = fopen("Message", "r");
     
-    while (Number < 1024)
+    while (Number < 1024) // increasing the array number so the message on the file can be read
     {
         fscanf(Message, "%c", &Word[Number]);
         Number++;
     }
 
     for (Number = 0; Word[Number] != 0; Number++)
-        //fprintf(Output ,"%d\n", (int)Word[Number]);
-        if ((int)Word[Number + 1] < 0)
+        //fprintf(Output ,"%d\n", (int)Word[Number]);  //this was used to observe the numbers that was printed due to the code sometimes printing out characters that are negative  
+        if ((int)Word[Number + 1] < 0) //Making sure the number isnt negaive, if it is it changes the number to 0
             Word[Number + 1] = 0;
     do
     {
@@ -48,7 +49,7 @@ int main()
                     {for(Number = 0; Number < 1024; Number++){
                     Word[Number] = Decryption((int)Word[Number], key);
                     }
-                fprintf(Output,"\n\n---------------------------------------------------------------------\n\n%s", Word);}
+                fprintf(Output,"\n\n---------------------------------------------------------------------\n\n%s", Word);}// prints out all possible ans
                 return 0;
                 }
             else if (choice == 1)
