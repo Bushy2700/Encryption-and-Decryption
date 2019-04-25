@@ -21,24 +21,27 @@ int main()
     
     Message = fopen("Message", "r");
     
-    while (feof(Message) == 0)
+    while (Number < 1024)
     {
         fscanf(Message, "%c", &Word[Number]);
         Number++;
     }
 
-    for (Number = 0; Number < 1024; Number++)
-        fprintf(Output ,"%d\n", (int)Word[Number]);
+    for (Number = 0; Word[Number] != 0; Number++)
+        //fprintf(Output ,"%d\n", (int)Word[Number]);
+        if ((int)Word[Number + 1] < 0)
+            Word[Number + 1] = 0;
     do
     {
         printf("Decode(0) or Encode(1)\n"); //the decode or encode choice
         scanf("%d", &choice);
         Number = 0;
         if (choice == 0) 
-        {for(Number = 0; Number < 1024; Number++){
+            {for (key = 0; key < 26; key++)
+                {for(Number = 0; Number < 1024; Number++){
                 Word[Number] = Decryption((int)Word[Number], key);
                 }
-            fprintf(Output,"%s", Word);
+            fprintf(Output,"\n\n---------------------------------------------------------------------\n\n%s", Word);}
             return 0;
             }
 
