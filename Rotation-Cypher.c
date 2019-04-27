@@ -4,7 +4,7 @@
 int Encryption(int letter, int key);
 int Decryption(int letter, int key);
 
-int main()
+void Rotation(void)
 {
     int UnknownDecryptionNumber;  // The counter that is used to brute force the roation cypher
     int choice; //whether the word is going to be encrypted or decrypted
@@ -50,13 +50,13 @@ int main()
                     Word[Number] = Decryption((int)Word[Number], key);
                     }
                 fprintf(Output,"\n\n---------------------------------------------------------------------\n\n%s", Word);}// prints out all possible ans
-                return 0;
+                return;
                 }
             else if (choice == 1)
                 {for(Number = 0; Number < 1024; Number++)
                     Word[Number] = Decryption((int)Word[Number], key);
                 fprintf(Output,"%s", Word);
-                return 0;}
+                return;}
             }
 
 
@@ -65,7 +65,7 @@ int main()
                 Word[Number] = Encryption((int)Word[Number], key);
                 }
             fprintf(Output,"%s", Word);
-            return 0;
+            return;
             }
         else
         (printf("please insert 1(Decode) or 2(Encode)\n"));
@@ -74,7 +74,7 @@ int main()
 
     
     
-    return 0; 
+    return; 
 }
 
 int Encryption(int letter, int key)
