@@ -23,7 +23,7 @@ void Rotation(void)
         scanf("%d", &key);}
     while (key < 1  || key > 25); //Making sure the key is between 1 and 25
     
-    Message = fopen("Message", "r");
+    Message = fopen("Message", "a+");
     
     while (Number < 1024) // increasing the array number so the message on the file can be read
     {

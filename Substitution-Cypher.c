@@ -20,13 +20,13 @@ void Substitution(void)
     printf("Please write key in Substitution Key file\nAfter key is written in file press enter in the terminal\n");
     scanf("%c", &Continue);
 
-    KeyStart = fopen("Substitution Key", "r");
+    KeyStart = fopen("Substitution Key", "a+");
     
     printf("Insert message into the Message file\nAfter message is written if file press enter key in terminal\n");
     scanf("%c", &Continue);
 
     
-    InputMessage = fopen("Message", "r");
+    InputMessage = fopen("Message", "a+");
     
     for (Number = 0; Number < 26; Number++) // storing the key into the array from the file
         {fscanf(KeyStart, "%c", &Key[Number]);}
