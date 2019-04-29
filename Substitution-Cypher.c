@@ -34,7 +34,7 @@ void Substitution(void)
     for (Number = 0; Number < 26; Number++) //making sure key is valid by adding together all the characters as ascii numbers. If valid they will add to make 2015 
         {Counter = (int)Key[Number] + Counter;}
         
-    if (Counter != 2015)
+    if (Counter != 2015) // if all the letters added to gether do not equal 2015 then the letters in the key is not right
         {printf("Wrong key used (double letters may be pressent)\n");
         return;}
     
@@ -55,7 +55,7 @@ void Substitution(void)
             {for (Number = 0; Number < 1024; Number++) 
             {Message[Number] = SubstitutionEncryption(Key, Message[Number]);}}
     
-        else if (Choice == 0) //Decryption 
+        else if (Choice == 0) //Decryption  
             {for (Number = 0; Number < 1024; Number++)   
                 {Message[Number] = SubstitutionDecryption(Key, Message[Number]);}}
         else printf("Please select 1 (Encode) or 2 (Decode)\n");
@@ -68,7 +68,7 @@ void Substitution(void)
     return;
 }
 
-int SubstitutionEncryption(char *Key, int Letter)
+int SubstitutionEncryption(char *Key, int Letter) // changes the letter into the key by determining the what key number is in the possition of the original letter
 {
     switch (Letter) { 
     case 65: return (int)Key[0];
@@ -100,7 +100,7 @@ int SubstitutionEncryption(char *Key, int Letter)
     default: return Letter;
 }}
 
-int SubstitutionDecryption(char *Key, int Letter)
+int SubstitutionDecryption(char *Key, int Letter) // tests the letter against the key and when the letter is the same as the key it returns what the letter would be if the key was abc...
 {
     if (Letter == (int)Key[0])
         return 65;

@@ -40,25 +40,27 @@ void Rotation(void)
         printf("Decode(0) or Encode(1)\n"); //the decode or encode choice
         scanf("%d", &choice);
         Number = 0;
-        if (choice == 0) 
-            {printf("Unknown key(1) or Known key(0)\n");
-            scanf("%d", &choice);
-            if (choice == 1)
-                {key = 1;
-                for (UnknownDecryptionNumber = 0; UnknownDecryptionNumber < 26; UnknownDecryptionNumber++)
-                    {for(Number = 0; Number < 1024; Number++){
-                    Word[Number] = Decryption((int)Word[Number], key);
-                    }
+        
+            if (choice == 0) 
+               {printf("Unknown key(1) or Known key(0)\n");
+               scanf("%d", &choice);
+                if (choice == 1)
+                    {key = 1;
+                    for (UnknownDecryptionNumber = 0; UnknownDecryptionNumber < 26; UnknownDecryptionNumber++)
+                        {for(Number = 0; Number < 1024; Number++){
+                        Word[Number] = Decryption((int)Word[Number], key);
+                        }
                 fprintf(Output,"\n\n---------------------------------------------------------------------\n\n%s", Word);}// prints out all possible ans
                 return;
-                }
-            else if (choice == 1)
+                    }
+            else if (choice == 0)
                 {for(Number = 0; Number < 1024; Number++)
                     Word[Number] = Decryption((int)Word[Number], key);
                 fprintf(Output,"%s", Word);
                 return;}
             }
 
+            
 
         else if (choice == 1) {
             for (Number = 0; Number < 1024; Number++){
@@ -69,12 +71,10 @@ void Rotation(void)
             }
         else
         (printf("please insert 1(Decode) or 2(Encode)\n"));
-        
-    }   while ("choice =! 2 && choice =! 1");
+       
 
-    
-    
-    return; 
+}while (choice != 0 && choice !=1 );
+return; 
 }
 
 int Encryption(int letter, int key)
